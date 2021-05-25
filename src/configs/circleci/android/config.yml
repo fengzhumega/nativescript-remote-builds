@@ -40,6 +40,11 @@ jobs:
           key: gems-linux-{{ checksum "Gemfile" }}
           paths:
             - vendor/bundle
+      
+      # setup gradle options
+      - run: touch ~/.gradle/gradle.properties
+      - run: echo 'org.gradle.daemon=false' >> ~/.gradle/gradle.properties
+      - run: echo 'org.gradle.workers.max=2' >> ~/.gradle/gradle.properties
 
       # build and publish if needed
       # - restore_cache:
