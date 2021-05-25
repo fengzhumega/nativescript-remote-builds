@@ -16,9 +16,9 @@ jobs:
       - run: npm config set prefix ~/npm_prefix
 
       # setup TNS
-      # - restore_cache:
-      #     keys:
-      #       - global-modules-linux-{{CLI_VERSION}}
+      - restore_cache:
+          keys:
+            - global-modules-linux-{{CLI_VERSION}}
       - run: tns --version || npm i -g nativescript@{{CLI_VERSION}}
       - save_cache:
           paths:
@@ -31,8 +31,8 @@ jobs:
 
       # NODE PACKAGES
       - run: npm install
-      # - restore_cache:
-      #     key: gems-linux-{{ checksum "Gemfile" }}
+      - restore_cache:
+          key: gems-linux-{{ checksum "Gemfile" }}
       # INSTALL GEMS (fastlane)
       - run: bundle config set path 'vendor/bundle'
       - run: bundle install
@@ -42,8 +42,8 @@ jobs:
             - vendor/bundle
 
       # build and publish if needed
-      # - restore_cache:
-      #     key: gradle-{{ checksum "package.json" }}
+      - restore_cache:
+          key: gradle-{{ checksum "package.json" }}
       - run:
           name: Fastlane
           command: bundle exec fastlane android build
