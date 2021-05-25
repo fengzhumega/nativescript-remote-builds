@@ -42,6 +42,7 @@ jobs:
             - vendor/bundle
       
       # setup gradle options
+      - run: mkdir -p ~/.gradle
       - run: touch ~/.gradle/gradle.properties
       - run: echo 'org.gradle.daemon=false' >> ~/.gradle/gradle.properties
       - run: echo 'org.gradle.workers.max=2' >> ~/.gradle/gradle.properties
