@@ -35,7 +35,7 @@ jobs:
       # NODE PACKAGES
       # - run: rm -rf package-lock.json
       - run: npm cache verify
-      - run: npm install
+      - run: npm install --verbose --no-progress
 
       # INSTALL GEMS
       - restore_cache:
