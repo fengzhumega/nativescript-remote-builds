@@ -35,7 +35,9 @@ jobs:
       # NODE PACKAGES
       # - run: npm cache verify
       # run npm install 2 times max if failed the first time
-      - run: "for i in 1 2; do npm install --force && break || sleep 3; done"
+      - run: "for i in 1 2; do (npm install --force) && break || sleep 3; done"
+      # rebuild the node-sass for macos
+      - run: npm rebuild node-sass
 
       # INSTALL GEMS
       - restore_cache:
