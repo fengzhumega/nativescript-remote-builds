@@ -16,9 +16,9 @@ jobs:
       - run: npm config set prefix ~/npm_prefix
 
       # setup global modules - TNS
-      - restore_cache:
-          keys:
-            - global-modules-mac-{{CLI_VERSION}}
+      # - restore_cache:
+      #     keys:
+      #       - global-modules-mac-{{CLI_VERSION}}
       - run: tns --version || npm i -g nativescript@{{CLI_VERSION}}
       - save_cache:
           paths:
@@ -33,8 +33,8 @@ jobs:
       - run: npm install
 
       # INSTALL GEMS
-      - restore_cache:
-          key: gems-mac-{{ checksum "Gemfile" }}
+      # - restore_cache:
+      #     key: gems-mac-{{ checksum "Gemfile" }}
       - run: bundle config set path 'vendor/bundle'
       - run: bundle install
       - save_cache:
