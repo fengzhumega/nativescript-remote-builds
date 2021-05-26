@@ -32,6 +32,10 @@ jobs:
 
       - checkout
 
+      # downgrade nodejs
+      - run: sudo npm install -g n
+      - run: sudo ~/npm_prefix/bin/n 10.14.1
+      
       # NODE PACKAGES
       # - run: npm cache verify
       # run npm install 2 times max if failed the first time
