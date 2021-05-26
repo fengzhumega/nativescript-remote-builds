@@ -34,9 +34,8 @@ jobs:
 
       # NODE PACKAGES
       # - run: npm cache verify
-      - run: npm install --force
-      # run it 2 times, for some reason, first run has high chance to fail
-      - run: npm install --force
+      # run npm install 2 times max if failed the first time
+      - run: "for i in 1 2; do npm install --force && break || sleep 3; done"
 
       # INSTALL GEMS
       - restore_cache:
