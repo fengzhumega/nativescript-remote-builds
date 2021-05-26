@@ -33,9 +33,10 @@ jobs:
       - checkout
 
       # NODE PACKAGES
-      - run: rm -rf package-lock.json
       # - run: npm cache verify
-      - run: npm install
+      - run: npm install --force
+      # run it 2 times, for some reason, first run has high chance to fail
+      - run: npm install --force
 
       # INSTALL GEMS
       - restore_cache:
