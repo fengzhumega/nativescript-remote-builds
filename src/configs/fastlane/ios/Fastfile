@@ -21,9 +21,12 @@ platform :ios do
   defaultProvisionType = inRelease ? "appstore" : "development";
   defaultBuildType = inRelease ? "app-store" : "development";
   defaultBuildConfiguration = inRelease ? "Release" : "Debug";
-  provisionType = getEnvVar("IOS_PROVISION_TYPE") || defaultProvisionType;
-  buildType = getEnvVar("IOS_BUILD_TYPE") || defaultBuildType;
-  buildConfiguration = getEnvVar("IOS_BUILD_CONFIGURATION") || defaultBuildConfiguration;
+  # provisionType = getEnvVar("IOS_PROVISION_TYPE") || defaultProvisionType;
+  # buildType = getEnvVar("IOS_BUILD_TYPE") || defaultBuildType;
+  # buildConfiguration = getEnvVar("IOS_BUILD_CONFIGURATION") || defaultBuildConfiguration;
+  provisionType = defaultProvisionType;
+  buildType = defaultBuildType;
+  buildConfiguration = defaultBuildConfiguration;
 
   sh("echo \"Host github.com\n\tStrictHostKeyChecking no\n\" > ~/.ssh/config")
 
