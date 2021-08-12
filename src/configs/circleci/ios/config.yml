@@ -17,6 +17,7 @@ jobs:
       - run: npm config set prefix ~/npm_prefix
       - run: mkdir -p ~/npm_prefix
       - run: mkdir -p ~/npm_prefix/lib
+      - run: brew install coreutils
 
       # setup global modules - TNS
       - restore_cache:
@@ -38,9 +39,8 @@ jobs:
       
       # NODE PACKAGES
       # - run: npm cache verify
-      # run npm install 2 times max if failed the first time
-      # - run: "for i in 1 2; do (npm install --force) && break || sleep 3; done"
-      - run: npm install --force
+      # run npm install 5 times max (this is due to circleci ramdomly fails over busy period)
+      - run: x=1;while [ $x -le 5 ] ; do echo "Trying to npm install ($x)... This cmd will timeout in 5 minutes.";  gtimeout 300 npm install && break; x=$(( $x + 1 )); done
       # rebuild the node-sass for macos
       - run: npm rebuild node-sass
 
