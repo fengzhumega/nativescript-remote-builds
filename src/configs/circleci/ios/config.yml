@@ -3,7 +3,8 @@ jobs:
   build:
     macos:
       # xcode: 11.3.0
-      xcode: 12.4.0
+      # xcode: 12.4.0
+      xcode: 13.1.0
     working_directory: "~/{{PROJECT_NAME}}"
     environment:
       FL_OUTPUT_DIR: ~/fl_output

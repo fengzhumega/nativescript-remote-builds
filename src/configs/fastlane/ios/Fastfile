@@ -1,4 +1,4 @@
-fastlane_version '2.184.0'
+fastlane_version '2.200.0'
 require_relative './common/utils'
 
 platform :ios do
