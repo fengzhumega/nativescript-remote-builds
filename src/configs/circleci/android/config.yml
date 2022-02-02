@@ -6,7 +6,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/android:api-29-node
+      - image: circleci/android:api-30-node
 
     working_directory: "~/{{PROJECT_NAME}}"
 
