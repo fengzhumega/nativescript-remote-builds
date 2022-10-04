@@ -19,13 +19,19 @@ jobs:
       - run: mkdir -p ~/npm_prefix
       - run: mkdir -p ~/npm_prefix/lib
       - run: brew install coreutils
+      # nativescript still depends on python2 at this point of time
+      - run: brew install pyenv
+      - run: pyenv install 2.7.18
+      - run: pyenv global 2.7.18
+      - run: echo 'export PATH=$(pyenv root)/shims:$PATH' >> $BASH_ENV
 
       # setup global modules - TNS
       - restore_cache:
           keys:
             - global-modules-mac-{{CLI_VERSION}}
-      - run: tns --version || npm i -g nativescript@{{CLI_VERSION}}
-      - run: npm i -g nativescript@8.1.5
+      # - run: tns --version || npm i -g nativescript@{{CLI_VERSION}}
+      - run: tns --version || npm i -g nativescript@8.1.5
+      # - run: npm i -g nativescript@8.1.5
       - run: npm i -g npm@6.14.15
       - save_cache:
           paths:
