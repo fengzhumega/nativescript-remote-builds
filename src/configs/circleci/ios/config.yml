@@ -2,9 +2,9 @@ version: 2
 jobs:
   build:
     macos:
+      # xcode: 11.3.0
       # xcode: 12.4.0
-      # xcode: 13.1.0
-      xcode: 13.4.1
+      xcode: 13.1.0
     working_directory: "~/{{PROJECT_NAME}}"
     environment:
       FL_OUTPUT_DIR: ~/fl_output
@@ -25,8 +25,6 @@ jobs:
           keys:
             - global-modules-mac-{{CLI_VERSION}}
       - run: tns --version || npm i -g nativescript@{{CLI_VERSION}}
-      - run: npm i -g nativescript@8.1.5
-      - run: npm i -g npm@6.14.15
       - save_cache:
           paths:
             - ~/npm_prefix
@@ -36,10 +34,9 @@ jobs:
 
       - checkout
 
-      # install specific nodejs
+      # downgrade nodejs
       - run: sudo npm install -g n
-      # - run: sudo ~/npm_prefix/bin/n 10.14.1
-      - run: sudo ~/npm_prefix/bin/n 12.22.7
+      - run: sudo ~/npm_prefix/bin/n 10.14.1
       
       # NODE PACKAGES
       # - run: npm cache verify
