@@ -15,7 +15,8 @@ jobs:
       # in order to be able to pull the ios signing repository
       - add_ssh_keys:
       # setup NPM
-      - run: echo 'export PATH=~/npm_prefix/bin:$PATH' >> $BASH_ENV
+      # node are installed to: /usr/local/bin/node after downgrade, we want lower version to take priority
+      - run: echo 'export PATH=~/npm_prefix/bin:/usr/local/bin:$PATH' >> $BASH_ENV
       - run: npm config set prefix ~/npm_prefix
       - run: mkdir -p ~/npm_prefix
       - run: mkdir -p ~/npm_prefix/lib
