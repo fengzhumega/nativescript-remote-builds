@@ -1,5 +1,7 @@
 # Gemfile
 source 'https://rubygems.org'
-gem 'fastlane', '2.200.0'
+# minimal sdk version requirement changed from apple from 15.0 => 16.1
+# gem 'fastlane', '2.200.0'
+gem 'fastlane', '2.213.0'
 gem 'CFPropertyList', '3.0.2'
 gem 'cocoapods', '{{IOS_COCOAPODS_VERSION}}'
