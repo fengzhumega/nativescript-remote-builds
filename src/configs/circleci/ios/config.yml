@@ -20,6 +20,9 @@ jobs:
       - run: mkdir -p ~/npm_prefix
       - run: mkdir -p ~/npm_prefix/lib
       - run: brew install coreutils
+      # install python 2.x (new macos image had removed python2 as default)
+      - run: curl "https://www.python.org/ftp/python/2.7.18/python-2.7.18-macosx10.9.pkg" > python-2.7.18-macosx10.9.pkg
+      - run: sudo installer -pkg python-2.7.18-macosx10.9.pkg -target /
 
       # setup global modules - TNS
       - restore_cache:
